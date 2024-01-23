@@ -52,7 +52,7 @@ Launchers in the current directory are Automator scripts
 	profile="${appname%.*}"
 
 	cd $apppath/Contents/$appname
-	./Contents/MacOS/firefox-bin -profile "$apppath/../Profiles/$profile/" > /dev/null 2>&1 &
+	./Contents/MacOS/firefox -profile "$apppath/../Profiles/$profile/" > /dev/null 2>&1 &
 ```
 
 
@@ -84,6 +84,7 @@ It is use to update all the Firefox app included inside each launcher
 
 	update_profile_app(){
 		local profile=$1
+		mkdir -p ${profile}.app/Contents/${profile}.app
 		rm -rf ${profile}.app/Contents/${profile}.app/Contents
 		cp -R Firefox.app/Contents ${profile}.app/Contents/${profile}.app/Contents/
 	}
