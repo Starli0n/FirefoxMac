@@ -89,7 +89,13 @@ It is use to update all the Firefox app included inside each launcher
 		cp -R Firefox.app/Contents ${profile}.app/Contents/${profile}.app/Contents/
 	}
 
+	update_profile_app Configuration
 	update_profile_app Empty
+	update_profile_app Private
+	update_profile_app San
+	update_profile_app Shopping
+	update_profile_app Starli0n
+	update_profile_app Watchlater
 ```
 
 
@@ -134,3 +140,29 @@ Configuration As Doc
 - https://addons.mozilla.org/en-US/firefox/addon/amazon-fr-1
 - https://addons.mozilla.org/en-US/firefox/addon/github
 - https://addons.mozilla.org/en-US/firefox/addon/docker-hub
+
+# Troubleshooting
+
+## Profile Missing
+
+```
+Profile Missing
+Your Firefox profile cannot be loaded. It may be missing or inaccessible.
+```
+
+Fix with
+```
+rm -f "/Users/starli0n/Library/Application Support/Firefox/profiles.ini"
+```
+
+## Automator App cannot be saved
+
+```
+The document $profile.app” could not be saved. A code signing error occurred.
+```
+
+It is due to the Firefox.app which is copied within the Automator App.
+Remove temporary the Firefox.app, then relaunch FireUpdate.app
+```
+rm -rf ${profile}.app/Contents/${profile}.app/Contents
+```
